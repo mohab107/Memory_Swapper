@@ -1,11 +1,11 @@
 # Hardware Memory Swapper (In-Place Data Swap via FSM)
 
-## 📌 Project Overview
+##  Project Overview
 This repository contains a Verilog RTL implementation of an automated **Memory Swapper Controller**. The core objective of this design is to exchange the data contents of two different memory locations (`address_a` and `address_b`) without relying on external data buffers or general-purpose registers. 
 
 Instead, the design cleverly utilizes memory address `0` as a hidden temporary storage buffer. The swapping sequence is fully orchestrated by an integrated Finite State Machine (FSM) that controls the read/write address multiplexers (4:1 MUX) over a 3-clock-cycle operation.
 
-## ✨ Key Features
+##  Key Features
 * **In-Place Swapping:** Swaps data entirely within the memory space using `Location 0` as a dedicated swap buffer.
 * **FSM Orchestration:** A 4-state Moore machine (`s0` to `s3`) perfectly times the read and write sequences to execute the swap autonomously.
 * **Address Multiplexing:** Two parameterized 4:1 multiplexers dynamically route the correct addresses to the memory's `address_r` and `address_w` ports based on the active FSM state.
@@ -14,7 +14,7 @@ Instead, the design cleverly utilizes memory address `0` as a hidden temporary s
 
 ---
 
-## 🏗️ System Architecture & Datapath
+##  System Architecture & Datapath
 
 The Top Module (`reg_swap`) integrates the memory block and the swapping logic. 
 
@@ -29,7 +29,7 @@ The Top Module (`reg_swap`) integrates the memory block and the swapping logic.
 
 ---
 
-## ⚙️ Swap Control FSM
+##  Swap Control FSM
 
 The FSM controls the `sel` lines of the address multiplexers. The swapping algorithm using Location `0` as a temporary buffer works as follows:
 
@@ -73,7 +73,7 @@ stateDiagram-v2
 
 ---
 
-## ✅ Simulation & Verification
+##  Simulation & Verification
 
 A testbench (`reg_swap_tb.v`) is provided to verify the swap logic dynamically. 
 
